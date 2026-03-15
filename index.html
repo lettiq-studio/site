@@ -1,658 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="page-index">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy</title>
+  <title>Lettiq — Find the words. Beat the clock.</title>
+  <meta name="description" content="Lettiq is a mobile word-puzzle game. Find hidden words across a tile board, challenge friends over local Wi-Fi, and customise your experience." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --bg:        #F5F0E8;
-      --surface:   #FDFAF4;
-      --ink:       #1A1714;
-      --ink-muted: #6B6560;
-      --accent:    #C14B2A;
-      --accent-2:  #2A5C45;
-      --rule:      #D9D2C5;
-      --font-display: 'Fraunces', Georgia, serif;
-      --font-mono:    'DM Mono', monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: clamp(15px, 1.1vw, 17px);
-      line-height: 1.75;
-      min-height: 100vh;
-    }
-
-    /* ── Noise texture overlay ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── Header ── */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--surface);
-      border-bottom: 1px solid var(--rule);
-      padding: 0 clamp(1.5rem, 5vw, 4rem);
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
-      backdrop-filter: blur(8px);
-    }
-
-    .site-name {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
-
-    /* ── Language switcher ── */
-    #lang-switcher {
-      display: flex; gap: 0.25rem;
-      background: var(--bg);
-      border: 1px solid var(--rule);
-      border-radius: 999px;
-      padding: 3px;
-    }
-
-    .lang-btn {
-      border: none; background: none; cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      padding: 0.3rem 0.75rem;
-      border-radius: 999px;
-      transition: all 0.2s ease;
-    }
-
-    .lang-btn.active {
-      background: var(--ink);
-      color: var(--bg);
-    }
-
-    .lang-btn:hover:not(.active) {
-      color: var(--ink);
-    }
-
-    /* ── Hero band ── */
-    .hero {
-      position: relative; z-index: 1;
-      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem) clamp(2rem, 5vw, 3rem);
-      border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: 1rem;
-    }
-
-    .hero-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-date {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--ink-muted);
-      letter-spacing: 0.08em;
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    /* ── Layout ── */
-    .page-wrap {
-      position: relative; z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 2rem) 6rem;
-    }
-
-    /* ── Section ── */
-    .policy-section {
-      margin-top: 3rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--rule);
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .policy-section:first-child { border-top: none; margin-top: 0; padding-top: 0; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .section-number {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    h2 {
-      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-    }
-
-    p { margin-bottom: 1rem; }
-    p:last-child { margin-bottom: 0; }
-
-    ul, ol {
-      padding-left: 1.4rem;
-      margin-bottom: 1rem;
-    }
-
-    li { margin-bottom: 0.4rem; }
-
-    strong { font-weight: 600; }
-
-    a {
-      color: var(--accent-2);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-      transition: color 0.15s;
-    }
-
-    a:hover { color: var(--accent); }
-
-    /* ── Contact box ── */
-    .contact-box {
-      margin-top: 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      border-left: 3px solid var(--accent-2);
-      padding: 1.25rem 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      line-height: 1.8;
-      color: var(--ink-muted);
-    }
-
-    .contact-box span { display: block; }
-    .contact-box strong { color: var(--ink); font-weight: 400; }
-
-    /* ── Footer ── */
-    footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid var(--rule);
-      padding: 2rem clamp(1.5rem, 5vw, 4rem);
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-note {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      color: var(--ink-muted);
-    }
-
-    /* ── TOC ── */
-    .toc {
-      background: var(--surface);
-      border: 1px solid var(--rule);
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 3rem;
-    }
-
-    .toc-title {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .toc ol {
-      padding-left: 1.2rem;
-      margin: 0;
-    }
-
-    .toc li { margin-bottom: 0.25rem; }
-
-    .toc a {
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 0.88rem;
-    }
-
-    .toc a:hover { color: var(--accent); text-decoration: underline; }
-
-    /* ── Hidden lang content ── */
-    [data-lang] { display: none; }
-    [data-lang].active { display: block; }
-
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-date { text-align: left; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- Ambient blobs -->
+  <div class="blob blob-indigo" aria-hidden="true"></div>
+  <div class="blob blob-mint" aria-hidden="true"></div>
+
+  <!-- NAV -->
   <header>
-    <span class="site-name" id="site-label">Privacy Policy</span>
-    <div id="lang-switcher" role="group" aria-label="Language selector"></div>
+    <a href="index.html" class="nav-logo" aria-label="Lettiq home">
+      <img src="./assets/appIconRectangle.png" alt="Lettiq" class="sq" />
+    </a>
+    <div class="nav-right">
+      <div id="lang-switcher" role="group" aria-label="Language selector"></div>
+      <a href="privacy.html" class="nav-link" data-i18n="navPrivacy">Privacy Policy</a>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div>
-      <p class="hero-label" data-i18n="heroLabel"></p>
-      <h1 data-i18n="heroTitle"></h1>
-    </div>
-    <p class="hero-date" data-i18n="heroDate"></p>
-  </div>
+  <main>
 
-  <!-- MAIN CONTENT -->
-  <main class="page-wrap" id="main-content"></main>
+    <!-- HERO -->
+    <section class="hero" aria-label="Hero">
+      <img class="hero-icon" src="./assets/appIconRounded.png" alt="Lettiq app icon" />
+      <h1 class="wordmark">Lettiq</h1>
+      <p class="tagline" data-i18n="tagline">Find the words. Beat the clock.</p>
+      <!--
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary" data-i18n="btnAppStore">App Store</a>
+        <a href="#" class="btn btn-secondary" data-i18n="btnGooglePlay">Google Play</a>
+      </div>
+      -->
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" aria-label="Features">
+      <p class="section-label" data-i18n="featuresLabel">Features</p>
+      <h2 class="section-title" data-i18n="featuresTitle">Why Lettiq?</h2>
+      <div class="features-grid" id="features-grid"></div>
+    </section>
+
+    <!-- DOWNLOAD CTA -->
+    <section class="download-cta" aria-label="Download">
+      <p class="section-label" data-i18n="downloadLabel">Download</p>
+      <h2 class="section-title" data-i18n="downloadTitle">Start Playing Today</h2>
+      <div class="cta-buttons">
+        <!-- <a href="#" class="btn btn-primary" data-i18n="btnAppStore">App Store</a> -->
+        <a href="#" class="btn btn-secondary" data-i18n="btnGooglePlay">Google Play</a>
+      </div>
+      <p class="platform-note" data-i18n="platformNote">Available on Android</p>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-note" data-i18n="footerLeft"></span>
-    <span class="footer-note" data-i18n="footerRight"></span>
+    <span class="footer-note" data-i18n="footerCopyright">© 2026 Lettiq Studio</span>
+    <a href="privacy.html" class="footer-note" data-i18n="footerPrivacy">Privacy Policy</a>
   </footer>
 
+  <!-- i18n -->
+  <script src="i18n/index.en.js"></script>
+  <script src="i18n/index.pl.js"></script>
+  <script src="i18n/engine.js"></script>
   <script>
-  // ─────────────────────────────────────────────────────────────
-  //  i18n ENGINE
-  //  To add a new language:
-  //    1. Add a new key to the `translations` object below
-  //    2. That's it — the switcher renders automatically
-  // ─────────────────────────────────────────────────────────────
+    // ── Feature icon SVGs (language-independent) ──────────────────
+    const FEATURE_ICONS = {
+      'word-discovery': `<svg viewBox="0 0 24 24" fill="none" stroke="#2FFFC2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="2"/>
+        <rect x="14" y="3" width="7" height="7" rx="2"/>
+        <rect x="3" y="14" width="7" height="7" rx="2"/>
+        <rect x="14" y="14" width="7" height="7" rx="2"/>
+      </svg>`,
+      'lan-multiplayer': `<svg viewBox="0 0 24 24" fill="none" stroke="#2FFFC2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+        <path d="M1.42 9a16 16 0 0 1 21.16 0"/>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+        <circle cx="12" cy="20" r="1" fill="#2FFFC2"/>
+      </svg>`,
+      'themes': `<svg viewBox="0 0 24 24" fill="none" stroke="#2FFFC2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+      </svg>`,
+    };
 
-  const translations = {
+    // ── Page render function ──────────────────────────────────────
+    function renderIndex(lang) {
+      const t = window.TRANSLATIONS[lang];
+      if (!t) return;
 
-    // ── ENGLISH ─────────────────────────────────────────────────
-    en: {
-      meta: {
-        langLabel: "EN",
-        htmlLang: "en",
-        pageTitle: "Privacy Policy",
-      },
-      ui: {
-        heroLabel: "Legal",
-        heroTitle: "Privacy\nPolicy",
-        heroDate: "Last updated · March 2025",
-        tocTitle: "Contents",
-        footerLeft: "© 2025 lettiq.studio",
-        footerRight: "Privacy Policy",
-      },
-      sections: [
-        {
-          id: "introduction",
-          title: "Introduction",
-          content: `
-            <p>This Privacy Policy explains how <strong>lettiq.studio</strong> ("we", "us", or "our") collects, uses, and protects your information when you play <strong>Lettiq</strong>, a mobile word-puzzle game available on Android and iOS.</p>
-            <p>By using the app, you agree to the practices described in this policy.</p>
-          `
-        },
-        {
-          id: "data-collected",
-          title: "Information We Collect",
-          content: `
-            <p>We collect only what is necessary to run the game:</p>
-            <ul>
-              <li><strong>Display name</strong> — the name you enter when setting up your profile, used to identify you in multiplayer games.</li>
-              <li><strong>Advertising identifier</strong> — your device's advertising ID (IDFA on iOS, GAID on Android), used by AppLovin MAX to serve ads.</li>
-              <li><strong>In-app purchase status</strong> — whether you have purchased the "Remove Ads" option. Payment is processed entirely by Google Play or the App Store; we never see your payment details.</li>
-              <li><strong>Google Play Games data</strong> — if you sign in with Google Play Games, Google shares your display name, achievement progress, and leaderboard scores with the app. This is governed by Google's own privacy policy.</li>
-            </ul>
-          `
-        },
-        {
-          id: "lan-multiplayer",
-          title: "LAN Multiplayer Data",
-          content: `
-            <p>When you host or join a local Wi-Fi game, the app broadcasts and receives the following data over your local network:</p>
-            <ul>
-              <li>Your display name</li>
-              <li>Your device's local IP address</li>
-              <li>Room metadata — room name, player count, and game settings</li>
-            </ul>
-            <p>This data is used solely to discover and connect players on the same network. It is never transmitted to any server or third party and is discarded at the end of the game session.</p>
-          `
-        },
-        {
-          id: "how-we-use",
-          title: "How We Use Your Data",
-          content: `
-            <p>The data we collect is used to:</p>
-            <ul>
-              <li>Run the game and its multiplayer features.</li>
-              <li>Display leaderboards and achievements via Google Play Games.</li>
-              <li>Show ads through AppLovin MAX.</li>
-              <li>Process in-app purchases through Google Play or the App Store.</li>
-            </ul>
-          `
-        },
-        {
-          id: "tracking",
-          title: "Tracking Technologies",
-          content: `
-            <p>Lettiq does not use cookies (it is a native mobile app, not a website).</p>
-            <p>AppLovin MAX uses your device's advertising identifier (IDFA/GAID) to show relevant ads. You can reset your advertising ID or opt out of ad personalisation at any time in your device's privacy settings:</p>
-            <ul>
-              <li><strong>Android</strong> — Settings → Privacy → Ads</li>
-              <li><strong>iOS</strong> — Settings → Privacy & Security → Tracking</li>
-            </ul>
-            <p>The app is configured for age-restricted (child-directed) treatment in AppLovin MAX, which disables behavioural targeting.</p>
-          `
-        },
-        {
-          id: "sharing",
-          title: "Sharing Your Information",
-          content: `
-            <p>We do not sell or rent your personal information. Data is shared only with the following third-party services, each operating under their own privacy policy:</p>
-            <ul>
-              <li><strong>Google</strong> (Google Play Games) — achievement and leaderboard data.</li>
-              <li><strong>AppLovin</strong> (MAX ad network) — advertising identifier for ad serving.</li>
-            </ul>
-          `
-        },
-        {
-          id: "retention",
-          title: "Data Retention",
-          content: `
-            <p>Your display name and in-app purchase status are stored on-device and remain until you uninstall the app or reset your device. LAN multiplayer data (display name, local IP, room metadata) is held only for the duration of the game session and is never persisted.</p>
-            <p>Data held by Google Play Games or AppLovin is subject to their respective retention policies.</p>
-          `
-        },
-        {
-          id: "rights",
-          title: "Your Rights",
-          content: `
-            <p>Depending on your location, you may have rights regarding your personal data, including access, rectification, erasure, restriction of processing, data portability, and the right to object.</p>
-            <p>To exercise any of these rights, please contact us at the address below. We will respond within the timeframe required by applicable law.</p>
-          `
-        },
-        {
-          id: "children",
-          title: "Children's Privacy",
-          content: `
-            <p>Lettiq is available to players of all ages, including children under 13. We take the following measures to protect younger players:</p>
-            <ul>
-              <li>We do not knowingly collect data that requires parental consent beyond a display name and advertising identifier, both of which can be managed or reset by a parent.</li>
-              <li>AppLovin MAX is configured in child-directed mode, which disables behavioural ad targeting.</li>
-            </ul>
-            <p>If you are a parent and wish to review or request deletion of any data associated with your child, please contact us at <a href="mailto:lettiq.studio@gmail.com">lettiq.studio@gmail.com</a>.</p>
-          `
-        },
-        {
-          id: "changes",
-          title: "Changes to This Policy",
-          content: `
-            <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on this page and updating the "Last updated" date.</p>
-            <p>We encourage you to review this policy periodically.</p>
-          `
-        },
-        {
-          id: "contact",
-          title: "Contact Us",
-          content: `
-            <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
-            <div class="contact-box">
-              <span><strong>lettiq.studio</strong></span>
-              <span>Email: <a href="mailto:lettiq.studio@gmail.com">lettiq.studio@gmail.com</a></span>
-            </div>
-          `
-        },
-      ]
-    },
+      document.documentElement.lang = t.meta.htmlLang;
+      document.title = t.meta.pageTitle;
 
-    // ── POLISH ───────────────────────────────────────────────────
-    pl: {
-      meta: {
-        langLabel: "PL",
-        htmlLang: "pl",
-        pageTitle: "Polityka Prywatności",
-      },
-      ui: {
-        heroLabel: "Informacje prawne",
-        heroTitle: "Polityka\nPrywatności",
-        heroDate: "Ostatnia aktualizacja · Marzec 2025",
-        tocTitle: "Spis treści",
-        footerLeft: "© 2025 lettiq.studio",
-        footerRight: "Polityka Prywatności",
-      },
-      sections: [
-        {
-          id: "wstep",
-          title: "Wstęp",
-          content: `
-            <p>Niniejsza Polityka Prywatności opisuje, w jaki sposób <strong>lettiq.studio</strong> („my", „nas" lub „nasz") zbiera, wykorzystuje i chroni Twoje informacje podczas grania w <strong>Lettiq</strong> — mobilną grę słowną dostępną na Androida i iOS.</p>
-            <p>Korzystając z aplikacji, wyrażasz zgodę na praktyki opisane w niniejszej polityce.</p>
-          `
-        },
-        {
-          id: "dane-zbierane",
-          title: "Zbierane dane",
-          content: `
-            <p>Zbieramy wyłącznie dane niezbędne do działania gry:</p>
-            <ul>
-              <li><strong>Nazwa wyświetlana</strong> — imię lub pseudonim, który podajesz podczas konfiguracji profilu, używany do identyfikacji w trybie wieloosobowym.</li>
-              <li><strong>Identyfikator reklamowy</strong> — identyfikator reklamowy Twojego urządzenia (IDFA na iOS, GAID na Androidzie), używany przez AppLovin MAX do wyświetlania reklam.</li>
-              <li><strong>Status zakupu w aplikacji</strong> — informacja o tym, czy zakupiłeś/-aś opcję „Usuń reklamy". Płatność jest w całości obsługiwana przez Google Play lub App Store; nie mamy dostępu do Twoich danych płatniczych.</li>
-              <li><strong>Dane Google Play Games</strong> — jeśli zalogujesz się przez Google Play Games, Google przekazuje aplikacji Twoją nazwę wyświetlaną, postęp osiągnięć i wyniki na liście najlepszych. Dane te podlegają własnej polityce prywatności Google.</li>
-            </ul>
-          `
-        },
-        {
-          id: "multiplayer-lan",
-          title: "Dane w trybie LAN",
-          content: `
-            <p>Gdy tworzysz lub dołączasz do gry przez lokalną sieć Wi-Fi, aplikacja wysyła i odbiera w sieci lokalnej następujące dane:</p>
-            <ul>
-              <li>Twoją nazwę wyświetlaną</li>
-              <li>Lokalny adres IP Twojego urządzenia</li>
-              <li>Metadane pokoju — nazwa pokoju, liczba graczy i ustawienia gry</li>
-            </ul>
-            <p>Dane te służą wyłącznie do wykrywania i łączenia graczy w tej samej sieci. Nie są nigdy przesyłane na żaden serwer ani do podmiotów trzecich i są usuwane po zakończeniu sesji gry.</p>
-          `
-        },
-        {
-          id: "jak-uzywamy",
-          title: "Jak używamy Twoich danych",
-          content: `
-            <p>Zebrane dane są wykorzystywane w celu:</p>
-            <ul>
-              <li>Uruchamiania gry i jej funkcji wieloosobowych.</li>
-              <li>Wyświetlania list wyników i osiągnięć za pośrednictwem Google Play Games.</li>
-              <li>Wyświetlania reklam przez AppLovin MAX.</li>
-              <li>Obsługi zakupów w aplikacji przez Google Play lub App Store.</li>
-            </ul>
-          `
-        },
-        {
-          id: "sledzenie",
-          title: "Technologie śledzenia",
-          content: `
-            <p>Lettiq nie używa plików cookie (jest to natywna aplikacja mobilna, nie strona internetowa).</p>
-            <p>AppLovin MAX używa identyfikatora reklamowego Twojego urządzenia (IDFA/GAID) do wyświetlania reklam. Możesz w każdej chwili zresetować identyfikator reklamowy lub zrezygnować z personalizacji reklam w ustawieniach prywatności urządzenia:</p>
-            <ul>
-              <li><strong>Android</strong> — Ustawienia → Prywatność → Reklamy</li>
-              <li><strong>iOS</strong> — Ustawienia → Prywatność i ochrona → Śledzenie</li>
-            </ul>
-            <p>Aplikacja jest skonfigurowana w trybie kierowanym do dzieci (child-directed) w AppLovin MAX, co wyłącza targetowanie behawioralne.</p>
-          `
-        },
-        {
-          id: "udostepnianie",
-          title: "Udostępnianie danych",
-          content: `
-            <p>Nie sprzedajemy ani nie wynajmujemy Twoich danych osobowych. Dane są udostępniane wyłącznie następującym usługom zewnętrznym, z których każda działa zgodnie z własną polityką prywatności:</p>
-            <ul>
-              <li><strong>Google</strong> (Google Play Games) — dane osiągnięć i list wyników.</li>
-              <li><strong>AppLovin</strong> (sieć reklamowa MAX) — identyfikator reklamowy do wyświetlania reklam.</li>
-            </ul>
-          `
-        },
-        {
-          id: "przechowywanie",
-          title: "Przechowywanie danych",
-          content: `
-            <p>Twoja nazwa wyświetlana i status zakupu w aplikacji są przechowywane lokalnie na urządzeniu i pozostają do momentu odinstalowania aplikacji lub zresetowania urządzenia. Dane trybu LAN (nazwa wyświetlana, lokalny adres IP, metadane pokoju) są przechowywane wyłącznie przez czas trwania sesji gry i nigdy nie są zapisywane trwale.</p>
-            <p>Dane przechowywane przez Google Play Games lub AppLovin podlegają ich własnym politykom przechowywania.</p>
-          `
-        },
-        {
-          id: "prawa",
-          title: "Twoje prawa",
-          content: `
-            <p>W zależności od miejsca zamieszkania możesz posiadać prawa dotyczące swoich danych osobowych, w tym prawo dostępu, sprostowania, usunięcia, ograniczenia przetwarzania, przenoszalności danych oraz prawo sprzeciwu.</p>
-            <p>Aby skorzystać z któregokolwiek z tych praw, skontaktuj się z nami pod adresem podanym poniżej. Odpowiemy w terminie wymaganym przez obowiązujące przepisy prawa.</p>
-          `
-        },
-        {
-          id: "dzieci",
-          title: "Prywatność dzieci",
-          content: `
-            <p>Lettiq jest dostępna dla graczy w każdym wieku, w tym dla dzieci poniżej 13. roku życia. Podejmujemy następujące środki w celu ochrony młodszych graczy:</p>
-            <ul>
-              <li>Nie zbieramy świadomie danych wymagających zgody rodziców, poza nazwą wyświetlaną i identyfikatorem reklamowym — obie te wartości mogą być przez rodzica zarządzane lub zresetowane.</li>
-              <li>AppLovin MAX jest skonfigurowany w trybie child-directed, który wyłącza behawioralne targetowanie reklam.</li>
-            </ul>
-            <p>Jeśli jesteś rodzicem i chcesz przejrzeć lub zażądać usunięcia danych powiązanych z Twoim dzieckiem, skontaktuj się z nami pod adresem <a href="mailto:lettiq.studio@gmail.com">lettiq.studio@gmail.com</a>.</p>
-          `
-        },
-        {
-          id: "zmiany",
-          title: "Zmiany w polityce",
-          content: `
-            <p>Możemy od czasu do czasu aktualizować niniejszą Politykę Prywatności. O istotnych zmianach poinformujemy Cię, zamieszczając nową politykę na tej stronie i aktualizując datę „Ostatniej aktualizacji".</p>
-            <p>Zachęcamy do okresowego przeglądania niniejszej polityki.</p>
-          `
-        },
-        {
-          id: "kontakt",
-          title: "Kontakt",
-          content: `
-            <p>Jeśli masz pytania dotyczące niniejszej Polityki Prywatności lub naszych praktyk w zakresie danych, skontaktuj się z nami:</p>
-            <div class="contact-box">
-              <span><strong>lettiq.studio</strong></span>
-              <span>E-mail: <a href="mailto:lettiq.studio@gmail.com">lettiq.studio@gmail.com</a></span>
-            </div>
-          `
-        },
-      ]
-    },
+      I18n.applyDataI18n(t);
 
-    // ── ADD NEW LANGUAGES BELOW ──────────────────────────────────
-    // Copy the structure above and translate. The switcher
-    // renders automatically from the keys in this object.
+      // Render feature cards
+      const grid = document.getElementById('features-grid');
+      if (grid) {
+        grid.innerHTML = t.features.map(f => `
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">${FEATURE_ICONS[f.id] || ''}</div>
+            <p class="feature-title">${f.title}</p>
+            <p class="feature-desc">${f.desc}</p>
+          </div>
+        `).join('');
+      }
+    }
 
-  };
-
-  // ─────────────────────────────────────────────────────────────
-  //  RENDER ENGINE — no changes needed below for new languages
-  // ─────────────────────────────────────────────────────────────
-
-  const DEFAULT_LANG = 'en';
-  let currentLang = localStorage.getItem('pp-lang') || DEFAULT_LANG;
-  if (!translations[currentLang]) currentLang = DEFAULT_LANG;
-
-  function buildSwitcher() {
-    const container = document.getElementById('lang-switcher');
-    container.innerHTML = '';
-    Object.keys(translations).forEach(code => {
-      const t = translations[code];
-      const btn = document.createElement('button');
-      btn.className = 'lang-btn' + (code === currentLang ? ' active' : '');
-      btn.textContent = t.meta.langLabel;
-      btn.setAttribute('aria-label', `Switch to ${t.meta.langLabel}`);
-      btn.addEventListener('click', () => setLang(code));
-      container.appendChild(btn);
-    });
-  }
-
-  function renderPage(lang) {
-    const t = translations[lang];
-    if (!t) return;
-
-    // HTML lang + page title
-    document.documentElement.lang = t.meta.htmlLang;
-    document.title = t.meta.pageTitle;
-    document.getElementById('site-label').textContent = t.meta.pageTitle;
-
-    // UI strings
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
-      if (t.ui[key] !== undefined) el.innerHTML = t.ui[key].replace(/\n/g, '<br>');
-    });
-
-    // Build TOC + sections
-    const main = document.getElementById('main-content');
-    const tocItems = t.sections.map((s, i) =>
-      `<li><a href="#${lang}-${s.id}">${s.title}</a></li>`
-    ).join('');
-
-    const sectionsHTML = t.sections.map((s, i) => `
-      <section class="policy-section" id="${lang}-${s.id}" style="animation-delay:${i * 0.04}s">
-        <p class="section-number">${String(i + 1).padStart(2, '0')}</p>
-        <h2>${s.title}</h2>
-        ${s.content}
-      </section>
-    `).join('');
-
-    main.innerHTML = `
-      <nav class="toc" aria-label="${t.ui.tocTitle}">
-        <p class="toc-title">${t.ui.tocTitle}</p>
-        <ol>${tocItems}</ol>
-      </nav>
-      ${sectionsHTML}
-    `;
-  }
-
-  function setLang(lang) {
-    currentLang = lang;
-    localStorage.setItem('pp-lang', lang);
-    buildSwitcher();
-    renderPage(lang);
-  }
-
-  // Init
-  buildSwitcher();
-  renderPage(currentLang);
+    I18n.initI18n(renderIndex);
   </script>
 
 </body>
