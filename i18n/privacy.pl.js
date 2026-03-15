@@ -29,7 +29,7 @@ window.TRANSLATIONS.pl = {
         <p>Zbieramy wyłącznie dane niezbędne do działania gry:</p>
         <ul>
           <!-- <li><strong>Nazwa wyświetlana</strong> — imię lub pseudonim, który podajesz podczas konfiguracji profilu, używany do identyfikacji w trybie wieloosobowym.</li> -->
-          <li><strong>Identyfikator reklamowy</strong> — identyfikator reklamowy Twojego urządzenia (IDFA na iOS, GAID na Androidzie), używany przez Google AdMob do wyświetlania reklam.</li>
+          <li><strong>Identyfikator reklamowy</strong> — identyfikator reklamowy Twojego urządzenia (IDFA na iOS, GAID na Androidzie), używany przez Google AdMob i AppLovin MAX do wyświetlania i pośredniczenia w reklamach.</li>
           <li><strong>Status zakupu w aplikacji</strong> — informacja o tym, czy zakupiłeś/-aś opcję „Usuń reklamy". Płatność jest w całości obsługiwana przez Google Play lub App Store; nie mamy dostępu do Twoich danych płatniczych.</li>
           <li><strong>Dane Google Play Games</strong> — jeśli zalogujesz się przez Google Play Games, Google przekazuje aplikacji Twoją nazwę wyświetlaną, postęp osiągnięć i wyniki na liście najlepszych. Dane te podlegają własnej polityce prywatności Google.</li>
         </ul>
@@ -66,11 +66,12 @@ window.TRANSLATIONS.pl = {
       title: 'Technologie śledzenia',
       content: `
         <p>Lettiq nie używa plików cookie (jest to natywna aplikacja mobilna, nie strona internetowa).</p>
-        <p>Google AdMob używa identyfikatora reklamowego Twojego urządzenia (IDFA/GAID) do wyświetlania reklam. Na iOS możesz zostać poproszony/-a o zgodę na śledzenie w ramach mechanizmu App Tracking Transparency firmy Apple, zanim zostaną wyświetlone spersonalizowane reklamy. Możesz w każdej chwili zresetować identyfikator reklamowy lub zrezygnować z personalizacji reklam w ustawieniach prywatności urządzenia:</p>
+        <p>Reklamy są wyświetlane za pośrednictwem <strong>Google AdMob</strong> i pośredniczone przez <strong>AppLovin MAX</strong>. Usługi te używają identyfikatora reklamowego Twojego urządzenia (IDFA/GAID) do wyświetlania reklam. Na iOS możesz zostać poproszony/-a o zgodę na śledzenie w ramach mechanizmu App Tracking Transparency (ATT) firmy Apple, zanim zostaną wyświetlone spersonalizowane reklamy. Możesz w każdej chwili zresetować identyfikator reklamowy lub zrezygnować z personalizacji reklam w ustawieniach prywatności urządzenia:</p>
         <ul>
           <li><strong>Android</strong> — Ustawienia → Prywatność → Reklamy</li>
           <li><strong>iOS</strong> — Ustawienia → Prywatność i ochrona → Śledzenie</li>
         </ul>
+        <p>Możesz też zrezygnować z reklam opartych na zainteresowaniach poprzez <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">ustawienia reklam Google</a>.</p>
         <p>Aplikacja jest skonfigurowana w trybie kierowanym do dzieci (child-directed) w Google AdMob, co wyłącza targetowanie behawioralne.</p>
       `
     },
@@ -80,8 +81,9 @@ window.TRANSLATIONS.pl = {
       content: `
         <p>Nie sprzedajemy ani nie wynajmujemy Twoich danych osobowych. Dane są udostępniane wyłącznie następującym usługom zewnętrznym, z których każda działa zgodnie z własną polityką prywatności:</p>
         <ul>
-          <li><strong>Google</strong> (Google Play Games) — dane osiągnięć i list wyników.</li>
-          <li><strong>Google</strong> (sieć reklamowa AdMob) — identyfikator reklamowy do wyświetlania reklam.</li>
+          <li><strong>Google</strong> (Google Play Games) — dane osiągnięć i list wyników. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Polityka prywatności</a></li>
+          <li><strong>Google</strong> (sieć reklamowa AdMob) — identyfikator reklamowy do wyświetlania reklam. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Polityka prywatności</a></li>
+          <li><strong>AppLovin</strong> (pośrednictwo MAX) — identyfikator reklamowy do pośredniczenia i dostarczania reklam. <a href="https://www.applovin.com/privacy/" target="_blank" rel="noopener">Polityka prywatności</a></li>
         </ul>
       `
     },

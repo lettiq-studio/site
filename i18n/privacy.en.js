@@ -29,7 +29,7 @@ window.TRANSLATIONS.en = {
         <p>We collect only what is necessary to run the game:</p>
         <ul>
           <!-- <li><strong>Display name</strong> — the name you enter when setting up your profile, used to identify you in multiplayer games.</li> -->
-          <li><strong>Advertising identifier</strong> — your device's advertising ID (IDFA on iOS, GAID on Android), used by Google AdMob to serve ads.</li>
+          <li><strong>Advertising identifier</strong> — your device's advertising ID (IDFA on iOS, GAID on Android), used by Google AdMob and AppLovin MAX to serve and mediate ads.</li>
           <li><strong>In-app purchase status</strong> — whether you have purchased the "Remove Ads" option. Payment is processed entirely by Google Play or the App Store; we never see your payment details.</li>
           <li><strong>Google Play Games data</strong> — if you sign in with Google Play Games, Google shares your display name, achievement progress, and leaderboard scores with the app. This is governed by Google's own privacy policy.</li>
         </ul>
@@ -66,11 +66,12 @@ window.TRANSLATIONS.en = {
       title: 'Tracking Technologies',
       content: `
         <p>Lettiq does not use cookies (it is a native mobile app, not a website).</p>
-        <p>Google AdMob uses your device's advertising identifier (IDFA/GAID) to show relevant ads. On iOS, you may be asked for permission to track via Apple's App Tracking Transparency framework before personalised ads are shown. You can reset your advertising ID or opt out of ad personalisation at any time in your device's privacy settings:</p>
+        <p>Ads are served via <strong>Google AdMob</strong> and mediated through <strong>AppLovin MAX</strong>. These services use your device's advertising identifier (IDFA/GAID) to show relevant ads. On iOS, you may be asked for permission to track via Apple's App Tracking Transparency (ATT) framework before personalised ads are shown. You can reset your advertising ID or opt out of ad personalisation at any time in your device's privacy settings:</p>
         <ul>
           <li><strong>Android</strong> — Settings → Privacy → Ads</li>
           <li><strong>iOS</strong> — Settings → Privacy &amp; Security → Tracking</li>
         </ul>
+        <p>You may also opt out of interest-based advertising via <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google's ad settings</a>.</p>
         <p>The app is configured for age-restricted (child-directed) treatment in Google AdMob, which disables behavioural targeting.</p>
       `
     },
@@ -80,8 +81,9 @@ window.TRANSLATIONS.en = {
       content: `
         <p>We do not sell or rent your personal information. Data is shared only with the following third-party services, each operating under their own privacy policy:</p>
         <ul>
-          <li><strong>Google</strong> (Google Play Games) — achievement and leaderboard data.</li>
-          <li><strong>Google</strong> (AdMob ad network) — advertising identifier for ad serving.</li>
+          <li><strong>Google</strong> (Google Play Games) — achievement and leaderboard data. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><strong>Google</strong> (AdMob ad network) — advertising identifier for ad serving. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><strong>AppLovin</strong> (MAX mediation) — advertising identifier for ad mediation and delivery. <a href="https://www.applovin.com/privacy/" target="_blank" rel="noopener">Privacy Policy</a></li>
         </ul>
       `
     },
